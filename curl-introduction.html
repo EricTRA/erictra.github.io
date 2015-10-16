@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The cURL command</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Eric Van Steenbergen">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+        <link href="./theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./" type="application/atom+xml" rel="alternate" title="Eric V. Braindumps ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">Eric V. Braindumps </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li class="active">
+                    <a href="./category/pelican.html">
+						<i class="icon-folder-open icon-large"></i>Pelican
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to The cURL command">
+                                        The cURL command
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2015-10-16T08:00:00+08:00">
+        <i class="icon-calendar"></i>Fri 16 October 2015
+</abbr>
+<span class="label">By</span>
+<a href="./author/eric-van-steenbergen.html"><i class="icon-user"></i>Eric Van Steenbergen</a>
+<span class="label">Category</span>
+<a href="./category/pelican.html"><i class="icon-folder-open"></i>Pelican</a>.
+
+
+<span class="label">Tags</span>
+	<a href="./tag/linux.html"><i class="icon-tag"></i>linux</a>
+	<a href="./tag/commands.html"><i class="icon-tag"></i>commands</a>
+	<a href="./tag/introductory.html"><i class="icon-tag"></i>introductory</a>
+</footer><!-- /.post-info -->                </div>
+                <p>If you haven't yet discovered the versatile curl, you might just be surprised by how clever a tool it is. curl, or cURL, is a lot more than a drop-in replacement for wget. Although either tool can be used to run a quick test of a web site, they really have different missions in the web universe. The wget command is used to grab pages from a web site -- either to test that they are available or to download them -- and can also be used to recursively download an entire site. curl, on the other hand, downloads pages just fine, but it can upload files and post data to web sites just as easily and it can converse with web sites using a wide range of protocols that is likely to surprise you -- including DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, TELNET, and TFTP. You can also use curl to interact with web-based APIs as REST, json, and SOAP. It's also been ported to a large number of operating systems including Solaris, NetBSD, FreeBSD, OpenBSD, Darwin, HPUX, IRIX, AIX, Tru64, Linux, UnixWare, HURD, Windows, and others.</p>
+<p>The simplest use of curl is type the command itself followed by the URL you want to check out. Here's one that seems to have been set up to anticipate your curl tests:</p>
+<p>$ curl quiet-waters-1228.herokuapp.com/hello
+Hello, World!
+Thank you for cURLing me!</p>
+<p>And, if you want to save the content of the page as part of your request, add the -o option along with a file name.</p>
+<p>$ curl -o msg http://quiet-waters-1228.herokuapp.com/hello
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    40    0    40    0     0   2191      0 --:--:-- --:--:-- --:--:--  2222
+Looking at the file afterwards, you can see that you've captured its content:</p>
+<p>$ cat msg
+Hello, World!
+Thank you for cURLing me!
+The name "curl" stands for "client URL", though some sysadmins find it easier to remember then name if they think of it as "see URL". It's also often written "cURL" to emphasize the "URL" part of the name. It is, after all, a tool that allows you to interact with URLs to get a variety of work tasks done.</p>
+<p>The curl command is said to be "powered by libCurl" for its transfer abilities. If you check your system and find curl is installed, you will also find its library files.</p>
+<p>$ which curl
+/usr/bin/curl
+$ sudo find / -name libcurl* -print
+/usr/share/licenses/libcurl-7.40.0
+/usr/lib64/libcurl.so.4.3.0
+/usr/lib64/libcurl.so.4
+RESOURCES</p>
+<p>eGuide: Software Defined Networking
+WHITE PAPER
+Batteries - the heart of your UPS
+SEE ALL 
+Search Resources
+  Go
+Testing a web site using curl is as easy as testing one using wget. You just use a command that basically says "show me the web page at this address and it makes a GET request and shows you the page in all of its text-based glory. Maybe that isn't how everyone wants to see web pages, but being able to test a site from the command line brings a certain joy to most of our nerdy little hearts. And, when you see some of the additional things that you can do with this versatile tool, like querying web services and applications, you might decide this is a tool you want to keep in your little arsenal of clever tricks.</p>
+<p>In the simplest kind of test, you might just want to see if your web site up and displaying your home page. A curl command like this one will fetch the page and display the corresponding HTML code (assuming it's an HTML file).</p>
+<p>$ curl http://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document
+&lt;!DOCTYPE html&gt;
+<html lang="en-US">
+<head>
+<title>Tryit Editor v2.6</title>
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/trystyle.css">
+...
+  <div class="iframecontainer">
+    <div class="iframe">
+      <div style="overflow:auto;">
+        <div class="headerText">Result:</div>
+      </div>
+      <div id="iframewrapper" class="iframewrapper"></p>
+<div class="highlight"><pre>  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+
+
+<p></div>
+  <div class="footerText">Try it Yourself - © <a href="http://www.w3schools.com">w3schools.com</a></div>
+</div>
+<script>submitTryit()</script>
+</body>
+Even with the middle of the output omitted, you can see that curl grabbed the header and the content of the web page. To display just the header information and not the entire page, use the -I option. This option tells curl to get/show the document information only. This is also known as a "header test".</p>
+<p>$ curl -I http://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document
+HTTP/1.1 200 OK
+Content-Encoding: gzip
+Accept-Ranges: bytes
+Cache-Control: Public,public
+Content-Type: text/html
+Date: Sun, 11 Oct 2015 20:55:43 GMT
+Expires: Sun, 11 Oct 2015 21:55:43 GMT
+Last-Modified: Sun, 11 Oct 2015 20:19:38 GMT
+Server: ECS (dca/2495)
+X-Cache: HIT
+X-Powered-By: ASP.NET
+Content-Length: 2269
+THE HIT LIST
+tech resume makeover
+IT Resume Makeover: When all else fails, break the rules
+Future Wi-Fi
+How to configure Wi-Fi channels for top network performance
+businessman flowchart
+Self-service BI review: Tableau vs. Qlik Sense vs. Power BI
+If the page you're asking about doesn't exist, you'll see the 404 (Not Found) error as in the example below.</p>
+<p>$ curl -I www.google.com/ghost
+HTTP/1.1 404 Not Found
+Content-Type: text/html; charset=UTF-8
+X-Content-Type-Options: nosniff
+Date: Sun, 11 Oct 2015 23:24:08 GMT
+Server: sffe
+Content-Length: 1566
+X-XSS-Protection: 1; mode=block
+There's also a -v (verbose) option that will add even more content to your search results. Obviously, this would be more interesting with a page that exists, but here's an example.</p>
+<p>$ curl -Iv www.google.com/ghost
+<em>   Trying 173.194.121.52...
+</em> Connected to www.google.com (173.194.121.52) port 80 (#0)</p>
+<blockquote>
+<p>HEAD /ghost HTTP/1.1
+User-Agent: curl/7.40.0
+Host: www.google.com
+Accept: <em>/</em></p>
+<p>&lt; HTTP/1.1 404 Not Found
+HTTP/1.1 404 Not Found
+&lt; Content-Type: text/html; charset=UTF-8
+Content-Type: text/html; charset=UTF-8
+&lt; X-Content-Type-Options: nosniff
+X-Content-Type-Options: nosniff
+&lt; Date: Sun, 11 Oct 2015 23:25:41 GMT
+Date: Sun, 11 Oct 2015 23:25:41 GMT
+&lt; Server: sffe
+Server: sffe
+&lt; Content-Length: 1566
+Content-Length: 1566
+&lt; X-XSS-Protection: 1; mode=block
+X-XSS-Protection: 1; mode=block</p>
+</blockquote>
+<p>&lt;
+* Connection #0 to host www.google.com left intact</p>
+<p>Of course, when you're using curl to interact with web services, you need to use a command that works with those services. In this example, we're just confirming the connection and asking about the services that are running.</p>
+<p>$ curl -X GET https://10.1.2.3:443/myapp/command.submit?cmd=about
+database-version=6.5.1.65432
+server-version=6.5.1.65432
+patches=P17
+In this example, we run a couple queries to get information on a member of the staff and then that individual's manager. Notice that the format (json) is specified. First, the person:</p>
+<p>$ curl -X GET 'https://10.1.2.155:443/myapp/command.submit?cmd=
+findUsers&amp;ad_login=sberry&amp;format=json'
+{
+"findUsers":[
+{"id":"275","idc_id":"1","supervisor_id":"123","add_state":"0",
+"remove_state":"0","ad_login":"sberry","business_unit_id":"",
+"creation_date":"2013-07-23 13:34:13.0","deletion_date":"2015-08
+-30 05:00:07.0","department":"IT","email_address":"sberry@boson.
+org","employee_type":"","exception_count":"","first_name":"Sage",
+"full_name":"Sage Berry","is_terminated":"True","job_status":"",
+"last_name":"Berry","location":"","mail_nickname":"sberry","start
+_date":"2011-08-11 00:00:00.0","termination_date":"2015-07-30 05
+:00:07.0","title":"Unix Systems Administrator","unique_id":"CN=
+Sage Berry,OU=All Users,DC=boson,DC=org","user_id":"1234""}
+Then the manager:</p>
+<p>$ curl -k -X GET 'https://10.1.2.155:443/myapp/command.submit?
+cmd=findUsers&amp;id=31&amp;format=json'
+{
+"findUsers":[
+{"id":"123","idc_id":"1","supervisor_id":"71","add_state":"0",
+"remove_state":"0","ad_login":"gjones","business_unit_id":"",
+"creation_date":"2012-05-25 13:34:13.0","deletion_date":"",
+"department":"IT","email_address":"gjones@boson.org","employee_ty
+pe":"Regular","exception_count":"","first_name":"Gary","full_name
+":"Jones, Gary","is_terminated":"False","job_status":"Active",
+"last_name":"Jones","location":"BOSTON, MA","mail_nickname":
+"gjones","start_date":"2011-02-28 00:00:00.0","termination_date":
+"","title":"IT MGR","unique_id":"CN=Gary Jones,OU=All Users,DC=
+boson,DC=org","user_id":"791""}
+Your web servers will have to be set up to permit this kind of access and may well require that they be configured with the IP addresses of systems that are allowed to run these queries.</p>
+<p>To get a list of the options available, just use the command curl --help. The output shown below is less than a third of what you'll see, but should give you an idea about how many options are available.</p>
+<p>$ curl --help
+Usage: curl [options...] <url>
+Options: (H) means HTTP/HTTPS only, (F) means FTP only
+     --anyauth       Pick "any" authentication method (H)
+ -a, --append        Append to target file when uploading
+                    (F/SFTP)
+     --basic         Use HTTP Basic Authentication (H)
+     --cacert FILE   CA certificate to verify peer against (SSL)
+     --capath DIR    CA directory to verify peer against (SSL)
+ -E, --cert CERT[:PASSWD]  Client certificate file and password
+                    (SSL)
+     --cert-type TYPE  Certificate file type (DER/PEM/ENG) (SSL)
+     --ciphers LIST  SSL ciphers to use (SSL)
+     --compressed    Request compressed response (using deflate
+                     or gzip)
+ -K, --config FILE   Read config from FILE
+     --connect-timeout SECONDS  Maximum time allowed for
+                     connection
+ -C, --continue-at OFFSET  Resumed transfer OFFSET
+ -b, --cookie STRING/FILE  Read cookies from STRING/FILE
+                     (H)
+ -c, --cookie-jar FILE  Write cookies to FILE after operation
+                     (H)
+     --create-dirs   Create necessary local directory hierarchy
+     --crlf          Convert LF to CRLF in upload
+     --crlfile FILE  Get a CRL list in PEM format from the
+                     given file
+ -d, --data DATA     HTTP POST data (H)
+     --data-ascii DATA  HTTP POST ASCII data (H)
+     --data-binary DATA  HTTP POST binary data (H)
+     --data-urlencode DATA  HTTP POST data url encoded (H)
+     --delegation STRING  GSS-API delegation permission
+     --digest        Use HTTP Digest Authentication (H)
+     --disable-eprt  Inhibit using EPRT or LPRT (F)
+     --disable-epsv  Inhibit using EPSV (F)
+     --dns-servers   DNS server addrs to use: 1.1.1.1;2.2.2.2
+     --dns-interface  Interface to use for DNS requests
+     --dns-ipv4-addr  IPv4 address to use for DNS requests, dot
+                      notation
+     --dns-ipv6-addr  IPv6 address to use for DNS requests, dot
+                      notation
+ -D, --dump-header FILE  Write the headers to FILE
+     --egd-file FILE  EGD socket path for random data (SSL)
+     --engine ENGINE  Crypto engine (use "--engine list" for
+                      list) (SSL)
+ -f, --fail           Fail silently (no output at all) on HTTP
+                      errors (H)
+ -F, --form CONTENT  Specify HTTP multipart POST data (H)
+     --form-string STRING  Specify HTTP multipart POST data (H)
+     --ftp-account DATA  Account data string (F)
+     --ftp-alternative-to-user COMMAND  String to replace "USER
+                     [name]" (F)
+     --ftp-create-dirs  Create the remote dirs if not present
+                     (F)
+     --ftp-method [MULTICWD/NOCWD/SINGLECWD]  Control CWD usage
+                     (F)
+     --ftp-pasv      Use PASV/EPSV instead of PORT (F)
+ -P, --ftp-port ADR  Use PORT with given address instead of
+                     PASV (F)
+     --ftp-skip-pasv-ip  Skip the IP address for PASV (F)
+     --ftp-pret      Send PRET before PASV (for drftpd) (F)
+     --ftp-ssl-ccc   Send CCC after authenticating (F)
+     --ftp-ssl-ccc-mode ACTIVE/PASSIVE  Set CCC mode (F)
+     --ftp-ssl-control  Require SSL/TLS for FTP login, clear for
+                     transfer (F)
+ -G, --get           Send the -d data with a HTTP GET (H)
+ -g, --globoff       Disable URL sequences and ranges using {}
+                     and []
+ -H, --header LINE   Pass custom header LINE to server (H)
+ -I, --head          Show document info only
+Clearly, curl is not a tool that you will completely conquer in one sitting.  Then again, you probably won't need to learn any more than how to use it with your web services and in your environment.  But it's clearly a tool to keep in mind whether you're trying a very simple "does it respond?" test or interacting with your server using some interesting queries.
+]
+}
+]
+}</p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="http://jinja.pocoo.org/"><i class="icon-external-link"></i>Jinja2</a></li>
+    <li><a href="http://www.linuxfoundation.org/world-without-linux"><i class="icon-external-link"></i>A world without Linux</a></li>
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+<li><a href="./" rel="alternate"><i class="icon-bookmark icon-large"></i>atom feed</a></li>
+    <li><a href="https://www.linkedin.com/in/ericvansteenbergen"><i class="icon-LinkedIn profile-sign icon-large"></i>LinkedIn profile</a></li>
+    <li><a href="http://erictra.github.io"><i class="icon-GitHub Page-sign icon-large"></i>GitHub Page</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="./category/pelican.html">
+    <i class="icon-folder-open icon-large"></i>Pelican
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is based on <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
