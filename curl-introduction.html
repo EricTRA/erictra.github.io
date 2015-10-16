@@ -128,15 +128,21 @@
 
 
 <p>And, if you want to save the content of the page as part of your request, add the -o option along with a file name.</p>
-<p>$ curl -o msg http://quiet-waters-1228.herokuapp.com/hello
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100    40    0    40    0     0   2191      0 --:--:-- --:--:-- --:--:--  2222
-Looking at the file afterwards, you can see that you've captured its content:</p>
-<p>$ cat msg
-Hello, World!
-Thank you for cURLing me!
-The name "curl" stands for "client URL", though some sysadmins find it easier to remember then name if they think of it as "see URL". It's also often written "cURL" to emphasize the "URL" part of the name. It is, after all, a tool that allows you to interact with URLs to get a variety of work tasks done.</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="s-Atom">curl</span> <span class="o">-</span><span class="s-Atom">o</span> <span class="s-Atom">msg</span> <span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="s-Atom">quiet</span><span class="o">-</span><span class="s-Atom">waters</span><span class="o">-</span><span class="m">1228</span><span class="p">.</span><span class="s-Atom">herokuapp</span><span class="p">.</span><span class="s-Atom">com</span><span class="o">/</span><span class="s-Atom">hello</span>
+  <span class="c1">% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span>
+                                 <span class="nv">Dload</span>  <span class="nv">Upload</span>   <span class="nv">Total</span>   <span class="nv">Spent</span>    <span class="nv">Left</span>  <span class="nv">Speed</span>
+<span class="m">100</span>    <span class="m">40</span>    <span class="m">0</span>    <span class="m">40</span>    <span class="m">0</span>     <span class="m">0</span>   <span class="m">2191</span>      <span class="m">0</span> <span class="s-Atom">--:--:--</span> <span class="s-Atom">--:--:--</span> <span class="s-Atom">--:--:--</span>  <span class="m">2222</span>
+</pre></div>
+
+
+<p>Looking at the file afterwards, you can see that you've captured its content:</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">cat</span> <span class="n">msg</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">World</span><span class="o">!</span>
+<span class="n">Thank</span> <span class="n">you</span> <span class="k">for</span> <span class="n">cURLing</span> <span class="n">me</span><span class="o">!</span>
+</pre></div>
+
+
+<p>The name "curl" stands for "client URL", though some sysadmins find it easier to remember then name if they think of it as "see URL". It's also often written "cURL" to emphasize the "URL" part of the name. It is, after all, a tool that allows you to interact with URLs to get a variety of work tasks done.</p>
 <p>The curl command is said to be "powered by libCurl" for its transfer abilities. If you check your system and find curl is installed, you will also find its library files.</p>
 <p>$ which curl
 /usr/bin/curl
