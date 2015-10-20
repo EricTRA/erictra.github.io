@@ -144,149 +144,157 @@
 
 <p>The name "curl" stands for "client URL", though some sysadmins find it easier to remember then name if they think of it as "see URL". It's also often written "cURL" to emphasize the "URL" part of the name. It is, after all, a tool that allows you to interact with URLs to get a variety of work tasks done.</p>
 <p>The curl command is said to be "powered by libCurl" for its transfer abilities. If you check your system and find curl is installed, you will also find its library files.</p>
-<p>$ which curl
-/usr/bin/curl
-$ sudo find / -name libcurl* -print
-/usr/share/licenses/libcurl-7.40.0
-/usr/lib64/libcurl.so.4.3.0
-/usr/lib64/libcurl.so.4
-RESOURCES</p>
-<p>eGuide: Software Defined Networking
-WHITE PAPER
-Batteries - the heart of your UPS
-SEE ALL 
-Search Resources
-  Go
-Testing a web site using curl is as easy as testing one using wget. You just use a command that basically says "show me the web page at this address and it makes a GET request and shows you the page in all of its text-based glory. Maybe that isn't how everyone wants to see web pages, but being able to test a site from the command line brings a certain joy to most of our nerdy little hearts. And, when you see some of the additional things that you can do with this versatile tool, like querying web services and applications, you might decide this is a tool you want to keep in your little arsenal of clever tricks.</p>
-<p>In the simplest kind of test, you might just want to see if your web site up and displaying your home page. A curl command like this one will fetch the page and display the corresponding HTML code (assuming it's an HTML file).</p>
-<p>$ curl http://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document
-&lt;!DOCTYPE html&gt;
-<html lang="en-US">
-<head>
-<title>Tryit Editor v2.6</title>
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/trystyle.css">
-...
-  <div class="iframecontainer">
-    <div class="iframe">
-      <div style="overflow:auto;">
-        <div class="headerText">Result:</div>
-      </div>
-      <div id="iframewrapper" class="iframewrapper"></p>
-<div class="highlight"><pre>  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">which</span> <span class="n">curl</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">curl</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">find</span> <span class="o">/</span> <span class="o">-</span><span class="n">name</span> <span class="n">libcurl</span><span class="o">*</span> <span class="o">-</span><span class="n">print</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">licenses</span><span class="o">/</span><span class="n">libcurl</span><span class="o">-</span><span class="mf">7.40.0</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">libcurl</span><span class="p">.</span><span class="n">so</span><span class="mf">.4.3.0</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">libcurl</span><span class="p">.</span><span class="n">so</span><span class="mf">.4</span>
 </pre></div>
 
 
-<p></div>
-  <div class="footerText">Try it Yourself - © <a href="http://www.w3schools.com">w3schools.com</a></div>
-</div>
-<script>submitTryit()</script>
-</body>
-Even with the middle of the output omitted, you can see that curl grabbed the header and the content of the web page. To display just the header information and not the entire page, use the -I option. This option tells curl to get/show the document information only. This is also known as a "header test".</p>
-<p>$ curl -I http://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document
-HTTP/1.1 200 OK
-Content-Encoding: gzip
-Accept-Ranges: bytes
-Cache-Control: Public,public
-Content-Type: text/html
-Date: Sun, 11 Oct 2015 20:55:43 GMT
-Expires: Sun, 11 Oct 2015 21:55:43 GMT
-Last-Modified: Sun, 11 Oct 2015 20:19:38 GMT
-Server: ECS (dca/2495)
-X-Cache: HIT
-X-Powered-By: ASP.NET
-Content-Length: 2269
-THE HIT LIST
-tech resume makeover
-IT Resume Makeover: When all else fails, break the rules
-Future Wi-Fi
-How to configure Wi-Fi channels for top network performance
-businessman flowchart
-Self-service BI review: Tableau vs. Qlik Sense vs. Power BI
-If the page you're asking about doesn't exist, you'll see the 404 (Not Found) error as in the example below.</p>
-<p>$ curl -I www.google.com/ghost
-HTTP/1.1 404 Not Found
-Content-Type: text/html; charset=UTF-8
-X-Content-Type-Options: nosniff
-Date: Sun, 11 Oct 2015 23:24:08 GMT
-Server: sffe
-Content-Length: 1566
-X-XSS-Protection: 1; mode=block
-There's also a -v (verbose) option that will add even more content to your search results. Obviously, this would be more interesting with a page that exists, but here's an example.</p>
-<p>$ curl -Iv www.google.com/ghost
-<em>   Trying 173.194.121.52...
-</em> Connected to www.google.com (173.194.121.52) port 80 (#0)</p>
-<blockquote>
-<p>HEAD /ghost HTTP/1.1
-User-Agent: curl/7.40.0
-Host: www.google.com
-Accept: <em>/</em></p>
-<p>&lt; HTTP/1.1 404 Not Found
-HTTP/1.1 404 Not Found
-&lt; Content-Type: text/html; charset=UTF-8
-Content-Type: text/html; charset=UTF-8
-&lt; X-Content-Type-Options: nosniff
-X-Content-Type-Options: nosniff
-&lt; Date: Sun, 11 Oct 2015 23:25:41 GMT
-Date: Sun, 11 Oct 2015 23:25:41 GMT
-&lt; Server: sffe
-Server: sffe
-&lt; Content-Length: 1566
-Content-Length: 1566
-&lt; X-XSS-Protection: 1; mode=block
-X-XSS-Protection: 1; mode=block</p>
-</blockquote>
-<p>&lt;
-* Connection #0 to host www.google.com left intact</p>
+<p>Testing a web site using curl is as easy as testing one using wget. You just use a command that basically says "show me the web page at this address and it makes a GET request and shows you the page in all of its text-based glory. Maybe that isn't how everyone wants to see web pages, but being able to test a site from the command line brings a certain joy to most of our nerdy little hearts. And, when you see some of the additional things that you can do with this versatile tool, like querying web services and applications, you might decide this is a tool you want to keep in your little arsenal of clever tricks.</p>
+<p>In the simplest kind of test, you might just want to see if your web site up and displaying your home page. A curl command like this one will fetch the page and display the corresponding HTML code (assuming it's an HTML file).</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="nb">curl</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document</span>
+<span class="o">&lt;!</span><span class="nb">DOCTYPE</span> <span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">html</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en-US&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">title</span><span class="o">&gt;</span><span class="nx">Tryit</span> <span class="nx">Editor</span> <span class="nx">v2.6</span><span class="o">&lt;/</span><span class="nb">title</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;viewport&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;width=device-width&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;viewport&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="k">link</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;stylesheet&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/trystyle.css&quot;</span><span class="o">&gt;</span>
+<span class="nx">...</span>
+  <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;iframecontainer&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;iframe&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nb">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;overflow:auto;&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;headerText&quot;</span><span class="o">&gt;</span><span class="nb">Result</span><span class="p">:</span><span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nb">div</span> <span class="n">id</span><span class="o">=</span><span class="s2">&quot;iframewrapper&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;iframewrapper&quot;</span><span class="o">&gt;</span>
+
+      <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nb">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;footerText&quot;</span><span class="o">&gt;</span><span class="nx">Try</span> <span class="nx">it</span> <span class="nx">Yourself</span> <span class="o">-</span> <span class="err">©</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://www.w3schools.com&quot;</span><span class="o">&gt;</span><span class="nx">w3schools.com</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">script</span><span class="o">&gt;</span><span class="nx">submitTryit</span><span class="p">()</span><span class="o">&lt;/</span><span class="nb">script</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">body</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>Even with the middle of the output omitted, you can see that curl grabbed the header and the content of the web page. To display just the header information and not the entire page, use the -I option. This option tells curl to get/show the document information only. This is also known as a "header test".</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">I</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document</span>
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Encoding</span><span class="o">:</span> <span class="n">gzip</span>
+<span class="n">Accept</span><span class="o">-</span><span class="n">Ranges</span><span class="o">:</span> <span class="n">bytes</span>
+<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="o">:</span> <span class="n">Public</span><span class="p">,</span><span class="n">public</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span>
+<span class="nl">Date:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">11</span> <span class="n">Oct</span> <span class="mi">2015</span> <span class="mi">20</span><span class="o">:</span><span class="mi">55</span><span class="o">:</span><span class="mi">43</span> <span class="n">GMT</span>
+<span class="nl">Expires:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">11</span> <span class="n">Oct</span> <span class="mi">2015</span> <span class="mi">21</span><span class="o">:</span><span class="mi">55</span><span class="o">:</span><span class="mi">43</span> <span class="n">GMT</span>
+<span class="n">Last</span><span class="o">-</span><span class="n">Modified</span><span class="o">:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">11</span> <span class="n">Oct</span> <span class="mi">2015</span> <span class="mi">20</span><span class="o">:</span><span class="mi">19</span><span class="o">:</span><span class="mi">38</span> <span class="n">GMT</span>
+<span class="nl">Server:</span> <span class="n">ECS</span> <span class="p">(</span><span class="n">dca</span><span class="o">/</span><span class="mi">2495</span><span class="p">)</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Cache</span><span class="o">:</span> <span class="n">HIT</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Powered</span><span class="o">-</span><span class="n">By</span><span class="o">:</span> <span class="n">ASP</span><span class="p">.</span><span class="n">NET</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="o">:</span> <span class="mi">2269</span>
+</pre></div>
+
+
+<p>If the page you're asking about doesn't exist, you'll see the 404 (Not Found) error as in the example below.</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">I</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">ghost</span>
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">404</span> <span class="n">Not</span> <span class="n">Found</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">-</span><span class="n">Options</span><span class="o">:</span> <span class="n">nosniff</span>
+<span class="nl">Date:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">11</span> <span class="n">Oct</span> <span class="mi">2015</span> <span class="mi">23</span><span class="o">:</span><span class="mi">24</span><span class="o">:</span><span class="mi">08</span> <span class="n">GMT</span>
+<span class="nl">Server:</span> <span class="n">sffe</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="o">:</span> <span class="mi">1566</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XSS</span><span class="o">-</span><span class="n">Protection</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span> <span class="n">mode</span><span class="o">=</span><span class="n">block</span>
+</pre></div>
+
+
+<p>There's also a -v (verbose) option that will add even more content to your search results. Obviously, this would be more interesting with a page that exists, but here's an example.</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">Iv</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">ghost</span>
+<span class="o">*</span>   <span class="n">Trying</span> <span class="mf">173.194.121.52</span><span class="p">...</span>
+<span class="o">*</span> <span class="n">Connected</span> <span class="n">to</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span> <span class="p">(</span><span class="mf">173.194.121.52</span><span class="p">)</span> <span class="n">port</span> <span class="mi">80</span> <span class="p">(</span><span class="err">#</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">HEAD</span> <span class="o">/</span><span class="n">ghost</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="o">&gt;</span> <span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="o">:</span> <span class="n">curl</span><span class="o">/</span><span class="mf">7.40.0</span>
+<span class="o">&gt;</span> <span class="n">Host</span><span class="o">:</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span>
+<span class="o">&gt;</span> <span class="n">Accept</span><span class="o">:</span> <span class="err">*/</span><span class="o">*</span>
+<span class="o">&gt;</span>
+<span class="o">&lt;</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">404</span> <span class="n">Not</span> <span class="n">Found</span>
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">404</span> <span class="n">Not</span> <span class="n">Found</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">-</span><span class="n">Options</span><span class="o">:</span> <span class="n">nosniff</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="o">-</span><span class="n">Options</span><span class="o">:</span> <span class="n">nosniff</span>
+<span class="o">&lt;</span> <span class="n">Date</span><span class="o">:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">11</span> <span class="n">Oct</span> <span class="mi">2015</span> <span class="mi">23</span><span class="o">:</span><span class="mi">25</span><span class="o">:</span><span class="mi">41</span> <span class="n">GMT</span>
+<span class="nl">Date:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">11</span> <span class="n">Oct</span> <span class="mi">2015</span> <span class="mi">23</span><span class="o">:</span><span class="mi">25</span><span class="o">:</span><span class="mi">41</span> <span class="n">GMT</span>
+<span class="o">&lt;</span> <span class="n">Server</span><span class="o">:</span> <span class="n">sffe</span>
+<span class="nl">Server:</span> <span class="n">sffe</span>
+<span class="o">&lt;</span> <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="o">:</span> <span class="mi">1566</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="o">:</span> <span class="mi">1566</span>
+<span class="o">&lt;</span> <span class="n">X</span><span class="o">-</span><span class="n">XSS</span><span class="o">-</span><span class="n">Protection</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span> <span class="n">mode</span><span class="o">=</span><span class="n">block</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XSS</span><span class="o">-</span><span class="n">Protection</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span> <span class="n">mode</span><span class="o">=</span><span class="n">block</span>
+
+<span class="o">&lt;</span>
+<span class="o">*</span> <span class="n">Connection</span> <span class="err">#</span><span class="mi">0</span> <span class="n">to</span> <span class="n">host</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span> <span class="n">left</span> <span class="n">intact</span>
+</pre></div>
+
+
 <p>Of course, when you're using curl to interact with web services, you need to use a command that works with those services. In this example, we're just confirming the connection and asking about the services that are running.</p>
-<p>$ curl -X GET https://10.1.2.3:443/myapp/command.submit?cmd=about
-database-version=6.5.1.65432
-server-version=6.5.1.65432
-patches=P17
-In this example, we run a couple queries to get information on a member of the staff and then that individual's manager. Notice that the format (json) is specified. First, the person:</p>
-<p>$ curl -X GET 'https://10.1.2.155:443/myapp/command.submit?cmd=
-findUsers&amp;ad_login=sberry&amp;format=json'
-{
-"findUsers":[
-{"id":"275","idc_id":"1","supervisor_id":"123","add_state":"0",
-"remove_state":"0","ad_login":"sberry","business_unit_id":"",
-"creation_date":"2013-07-23 13:34:13.0","deletion_date":"2015-08
--30 05:00:07.0","department":"IT","email_address":"sberry@boson.
-org","employee_type":"","exception_count":"","first_name":"Sage",
-"full_name":"Sage Berry","is_terminated":"True","job_status":"",
-"last_name":"Berry","location":"","mail_nickname":"sberry","start
-_date":"2011-08-11 00:00:00.0","termination_date":"2015-07-30 05
-:00:07.0","title":"Unix Systems Administrator","unique_id":"CN=
-Sage Berry,OU=All Users,DC=boson,DC=org","user_id":"1234""}
-Then the manager:</p>
-<p>$ curl -k -X GET 'https://10.1.2.155:443/myapp/command.submit?
-cmd=findUsers&amp;id=31&amp;format=json'
-{
-"findUsers":[
-{"id":"123","idc_id":"1","supervisor_id":"71","add_state":"0",
-"remove_state":"0","ad_login":"gjones","business_unit_id":"",
-"creation_date":"2012-05-25 13:34:13.0","deletion_date":"",
-"department":"IT","email_address":"gjones@boson.org","employee_ty
-pe":"Regular","exception_count":"","first_name":"Gary","full_name
-":"Jones, Gary","is_terminated":"False","job_status":"Active",
-"last_name":"Jones","location":"BOSTON, MA","mail_nickname":
-"gjones","start_date":"2011-02-28 00:00:00.0","termination_date":
-"","title":"IT MGR","unique_id":"CN=Gary Jones,OU=All Users,DC=
-boson,DC=org","user_id":"791""}
-Your web servers will have to be set up to permit this kind of access and may well require that they be configured with the IP addresses of systems that are allowed to run these queries.</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="n">https</span><span class="o">:</span><span class="c1">//10.1.2.3:443/myapp/command.submit?cmd=about</span>
+<span class="n">database</span><span class="o">-</span><span class="n">version</span><span class="o">=</span><span class="mf">6.5.1.65432</span>
+<span class="n">server</span><span class="o">-</span><span class="n">version</span><span class="o">=</span><span class="mf">6.5.1.65432</span>
+<span class="n">patches</span><span class="o">=</span><span class="n">P17</span>
+</pre></div>
+
+
+<p>In this example, we run a couple queries to get information on a member of the staff and then that individual's manager. Notice that the format (json) is specified. First, the person:</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="nt">curl</span> <span class="nt">-X</span> <span class="nt">GET</span> <span class="s1">&#39;https://10.1.2.155:443/myapp/command.submit?cmd=</span>
+<span class="s1">findUsers&amp;ad_login=sberry&amp;format=json&#39;</span>
+<span class="p">{</span>
+<span class="s2">&quot;findUsers&quot;</span><span class="o">:</span><span class="cp">[</span>
+<span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;275&quot;</span><span class="p">,</span><span class="s2">&quot;idc_id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;supervisor_id&quot;</span><span class="p">:</span><span class="s2">&quot;123&quot;</span><span class="p">,</span><span class="s2">&quot;add_state&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="s2">&quot;remove_state&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="s2">&quot;ad_login&quot;</span><span class="p">:</span><span class="s2">&quot;sberry&quot;</span><span class="p">,</span><span class="s2">&quot;business_unit_id&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;creation_date&quot;</span><span class="p">:</span><span class="s2">&quot;2013-07-23 13:34:13.0&quot;</span><span class="p">,</span><span class="s2">&quot;deletion_date&quot;</span><span class="p">:</span><span class="s2">&quot;2015-08</span>
+<span class="s2">-30 05:00:07.0&quot;</span><span class="p">,</span><span class="s2">&quot;department&quot;</span><span class="p">:</span><span class="s2">&quot;IT&quot;</span><span class="p">,</span><span class="s2">&quot;email_address&quot;</span><span class="p">:</span><span class="s2">&quot;sberry@boson.</span>
+<span class="s2">org&quot;</span><span class="p">,</span><span class="s2">&quot;employee_type&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;exception_count&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;first_name&quot;</span><span class="p">:</span><span class="s2">&quot;Sage&quot;</span><span class="p">,</span>
+<span class="s2">&quot;full_name&quot;</span><span class="p">:</span><span class="s2">&quot;Sage Berry&quot;</span><span class="p">,</span><span class="s2">&quot;is_terminated&quot;</span><span class="p">:</span><span class="s2">&quot;True&quot;</span><span class="p">,</span><span class="s2">&quot;job_status&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;last_name&quot;</span><span class="p">:</span><span class="s2">&quot;Berry&quot;</span><span class="p">,</span><span class="s2">&quot;location&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;mail_nickname&quot;</span><span class="p">:</span><span class="s2">&quot;sberry&quot;</span><span class="p">,</span><span class="s2">&quot;start</span>
+<span class="s2">_date&quot;</span><span class="p">:</span><span class="s2">&quot;2011-08-11 00:00:00.0&quot;</span><span class="p">,</span><span class="s2">&quot;termination_date&quot;</span><span class="p">:</span><span class="s2">&quot;2015-07-30 05</span>
+<span class="s2">:00:07.0&quot;</span><span class="p">,</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Unix Systems Administrator&quot;</span><span class="p">,</span><span class="s2">&quot;unique_id&quot;</span><span class="p">:</span><span class="s2">&quot;CN=</span>
+<span class="s2">Sage Berry,OU=All Users,DC=boson,DC=org&quot;</span><span class="p">,</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span><span class="s2">&quot;1234&quot;&quot;}</span>
+</pre></div>
+
+
+<p>Then the manager:</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="nt">curl</span> <span class="nt">-k</span> <span class="nt">-X</span> <span class="nt">GET</span> <span class="s1">&#39;https://10.1.2.155:443/myapp/command.submit?</span>
+<span class="s1">cmd=findUsers&amp;id=31&amp;format=json&#39;</span>
+<span class="p">{</span>
+<span class="s2">&quot;findUsers&quot;</span><span class="o">:</span><span class="cp">[</span>
+<span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;123&quot;</span><span class="p">,</span><span class="s2">&quot;idc_id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;supervisor_id&quot;</span><span class="p">:</span><span class="s2">&quot;71&quot;</span><span class="p">,</span><span class="s2">&quot;add_state&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="s2">&quot;remove_state&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="s2">&quot;ad_login&quot;</span><span class="p">:</span><span class="s2">&quot;gjones&quot;</span><span class="p">,</span><span class="s2">&quot;business_unit_id&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;creation_date&quot;</span><span class="p">:</span><span class="s2">&quot;2012-05-25 13:34:13.0&quot;</span><span class="p">,</span><span class="s2">&quot;deletion_date&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;department&quot;</span><span class="p">:</span><span class="s2">&quot;IT&quot;</span><span class="p">,</span><span class="s2">&quot;email_address&quot;</span><span class="p">:</span><span class="s2">&quot;gjones@boson.org&quot;</span><span class="p">,</span><span class="s2">&quot;employee_ty</span>
+<span class="s2">pe&quot;</span><span class="p">:</span><span class="s2">&quot;Regular&quot;</span><span class="p">,</span><span class="s2">&quot;exception_count&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;first_name&quot;</span><span class="p">:</span><span class="s2">&quot;Gary&quot;</span><span class="p">,</span><span class="s2">&quot;full_name</span>
+<span class="s2">&quot;</span><span class="p">:</span><span class="s2">&quot;Jones, Gary&quot;</span><span class="p">,</span><span class="s2">&quot;is_terminated&quot;</span><span class="p">:</span><span class="s2">&quot;False&quot;</span><span class="p">,</span><span class="s2">&quot;job_status&quot;</span><span class="p">:</span><span class="s2">&quot;Active&quot;</span><span class="p">,</span>
+<span class="s2">&quot;last_name&quot;</span><span class="p">:</span><span class="s2">&quot;Jones&quot;</span><span class="p">,</span><span class="s2">&quot;location&quot;</span><span class="p">:</span><span class="s2">&quot;BOSTON, MA&quot;</span><span class="p">,</span><span class="s2">&quot;mail_nickname&quot;</span><span class="p">:</span>
+<span class="s2">&quot;gjones&quot;</span><span class="p">,</span><span class="s2">&quot;start_date&quot;</span><span class="p">:</span><span class="s2">&quot;2011-02-28 00:00:00.0&quot;</span><span class="p">,</span><span class="s2">&quot;termination_date&quot;</span><span class="p">:</span>
+<span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;IT MGR&quot;</span><span class="p">,</span><span class="s2">&quot;unique_id&quot;</span><span class="p">:</span><span class="s2">&quot;CN=Gary Jones,OU=All Users,DC=</span>
+<span class="s2">boson,DC=org&quot;</span><span class="p">,</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span><span class="s2">&quot;791&quot;&quot;}</span>
+</pre></div>
+
+
+<p>Your web servers will have to be set up to permit this kind of access and may well require that they be configured with the IP addresses of systems that are allowed to run these queries.</p>
 <p>To get a list of the options available, just use the command curl --help. The output shown below is less than a third of what you'll see, but should give you an idea about how many options are available.</p>
-<p>$ curl --help
-Usage: curl [options...] <url>
+<div class="highlight"><pre><span class="err">$</span> <span class="nb">curl</span> <span class="o">--</span><span class="nx">help</span>
+<span class="nb">Usage</span><span class="p">:</span> <span class="nb">curl</span> <span class="err">[</span><span class="nx">options...</span><span class="cp">]</span> <span class="nt">&lt;url&gt;</span>
 Options: (H) means HTTP/HTTPS only, (F) means FTP only
-     --anyauth       Pick "any" authentication method (H)
+     --anyauth       Pick &quot;any&quot; authentication method (H)
  -a, --append        Append to target file when uploading
                     (F/SFTP)
      --basic         Use HTTP Basic Authentication (H)
      --cacert FILE   CA certificate to verify peer against (SSL)
      --capath DIR    CA directory to verify peer against (SSL)
- -E, --cert CERT[:PASSWD]  Client certificate file and password
+ -E, --cert CERT<span class="cp">[</span><span class="p">:</span><span class="nx">PASSWD</span><span class="cp">]</span>  Client certificate file and password
                     (SSL)
      --cert-type TYPE  Certificate file type (DER/PEM/ENG) (SSL)
      --ciphers LIST  SSL ciphers to use (SSL)
@@ -320,18 +328,18 @@ Options: (H) means HTTP/HTTPS only, (F) means FTP only
                       notation
  -D, --dump-header FILE  Write the headers to FILE
      --egd-file FILE  EGD socket path for random data (SSL)
-     --engine ENGINE  Crypto engine (use "--engine list" for
+     --engine ENGINE  Crypto engine (use &quot;--engine list&quot; for
                       list) (SSL)
  -f, --fail           Fail silently (no output at all) on HTTP
                       errors (H)
  -F, --form CONTENT  Specify HTTP multipart POST data (H)
      --form-string STRING  Specify HTTP multipart POST data (H)
      --ftp-account DATA  Account data string (F)
-     --ftp-alternative-to-user COMMAND  String to replace "USER
-                     [name]" (F)
+     --ftp-alternative-to-user COMMAND  String to replace &quot;USER
+                     <span class="cp">[</span><span class="nb">name</span><span class="cp">]</span>&quot; (F)
      --ftp-create-dirs  Create the remote dirs if not present
                      (F)
-     --ftp-method [MULTICWD/NOCWD/SINGLECWD]  Control CWD usage
+     --ftp-method <span class="cp">[</span><span class="nx">MULTICWD</span><span class="p">/</span><span class="nx">NOCWD</span><span class="p">/</span><span class="nx">SINGLECWD</span><span class="cp">]</span>  Control CWD usage
                      (F)
      --ftp-pasv      Use PASV/EPSV instead of PORT (F)
  -P, --ftp-port ADR  Use PORT with given address instead of
@@ -344,14 +352,13 @@ Options: (H) means HTTP/HTTPS only, (F) means FTP only
                      transfer (F)
  -G, --get           Send the -d data with a HTTP GET (H)
  -g, --globoff       Disable URL sequences and ranges using {}
-                     and []
+                     and <span class="cp">[]</span>
  -H, --header LINE   Pass custom header LINE to server (H)
  -I, --head          Show document info only
-Clearly, curl is not a tool that you will completely conquer in one sitting.  Then again, you probably won't need to learn any more than how to use it with your web services and in your environment.  But it's clearly a tool to keep in mind whether you're trying a very simple "does it respond?" test or interacting with your server using some interesting queries.
-]
-}
-]
-}</p>
+</pre></div>
+
+
+<p>Clearly, curl is not a tool that you will completely conquer in one sitting.  Then again, you probably won't need to learn any more than how to use it with your web services and in your environment.  But it's clearly a tool to keep in mind whether you're trying a very simple "does it respond?" test or interacting with your server using some interesting queries.</p>
                 </div><!-- /.entry-content -->
         </article>
 </section>
