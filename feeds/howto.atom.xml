@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eric V. Braindumps</title><link href="http://erictra.github.io/" rel="alternate"></link><link href="http://erictra.github.io/feeds/howto.atom.xml" rel="self"></link><id>http://erictra.github.io/</id><updated>2015-10-16T08:00:00+08:00</updated><entry><title>The cURL command</title><link href="http://erictra.github.io/curl-introduction.html" rel="alternate"></link><published>2015-10-16T08:00:00+08:00</published><author><name>Eric Van Steenbergen</name></author><id>tag:erictra.github.io,2015-10-16:curl-introduction.html</id><summary type="html">&lt;p&gt;If you haven't yet discovered the versatile curl, you might just be surprised by how clever a tool it is. curl, or cURL, is a lot more than a drop-in replacement for wget. Although either tool can be used to run a quick test of a web site, they really have different missions in the web universe. The wget command is used to grab pages from a web site -- either to test that they are available or to download them -- and can also be used to recursively download an entire site. curl, on the other hand, downloads pages just fine, but it can upload files and post data to web sites just as easily and it can converse with web sites using a wide range of protocols that is likely to surprise you -- including DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, TELNET, and TFTP. You can also use curl to interact with web-based APIs as REST, json, and SOAP. It's also been ported to a large number of operating systems including Solaris, NetBSD, FreeBSD, OpenBSD, Darwin, HPUX, IRIX, AIX, Tru64, Linux, UnixWare, HURD, Windows, and others.&lt;/p&gt;
+&lt;p&gt;The simplest use of curl is type the command itself followed by the URL you want to check out. Here's one that seems to have been set up to anticipate your curl tests:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl quiet-waters-1228.herokuapp.com/hello
+Hello, World!
+Thank you &lt;span class="k"&gt;for&lt;/span&gt; cURLing me!
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And, if you want to save the content of the page as part of your request, add the -o option along with a file name.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="s-Atom"&gt;curl&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="s-Atom"&gt;o&lt;/span&gt; &lt;span class="s-Atom"&gt;msg&lt;/span&gt; &lt;span class="nn"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="s-Atom"&gt;quiet&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="s-Atom"&gt;waters&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1228.&lt;/span&gt;&lt;span class="s-Atom"&gt;herokuapp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s-Atom"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s-Atom"&gt;hello&lt;/span&gt;
+  &lt;span class="c1"&gt;% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current&lt;/span&gt;
+                                 &lt;span class="nv"&gt;Dload&lt;/span&gt;  &lt;span class="nv"&gt;Upload&lt;/span&gt;   &lt;span class="nv"&gt;Total&lt;/span&gt;   &lt;span class="nv"&gt;Spent&lt;/span&gt;    &lt;span class="nv"&gt;Left&lt;/span&gt;  &lt;span class="nv"&gt;Speed&lt;/span&gt;
+&lt;span class="mi"&gt;100&lt;/span&gt;    &lt;span class="mi"&gt;40&lt;/span&gt;    &lt;span class="mi"&gt;0&lt;/span&gt;    &lt;span class="mi"&gt;40&lt;/span&gt;    &lt;span class="mi"&gt;0&lt;/span&gt;     &lt;span class="mi"&gt;0&lt;/span&gt;   &lt;span class="mi"&gt;2191&lt;/span&gt;      &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="s-Atom"&gt;--:--:--&lt;/span&gt; &lt;span class="s-Atom"&gt;--:--:--&lt;/span&gt; &lt;span class="s-Atom"&gt;--:--:--&lt;/span&gt;  &lt;span class="mi"&gt;2222&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Looking at the file afterwards, you can see that you've captured its content:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;cat msg
+Hello, World!
+Thank you &lt;span class="k"&gt;for&lt;/span&gt; cURLing me!
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The name "curl" stands for "client URL", though some sysadmins find it easier to remember then name if they think of it as "see URL". It's also often written "cURL" to emphasize the "URL" part of the name. It is, after all, a tool that allows you to interact with URLs to get a variety of work tasks done.&lt;/p&gt;
+&lt;p&gt;The curl command is said to be "powered by libCurl" for its transfer abilities. If you check your system and find curl is installed, you will also find its library files.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;which curl
+/usr/bin/curl
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo find / -name libcurl* -print
+/usr/share/licenses/libcurl-7.40.0
+/usr/lib64/libcurl.so.4.3.0
+/usr/lib64/libcurl.so.4
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Testing a web site using curl is as easy as testing one using wget. You just use a command that basically says "show me the web page at this address and it makes a GET request and shows you the page in all of its text-based glory. Maybe that isn't how everyone wants to see web pages, but being able to test a site from the command line brings a certain joy to most of our nerdy little hearts. And, when you see some of the additional things that you can do with this versatile tool, like querying web services and applications, you might decide this is a tool you want to keep in your little arsenal of clever tricks.&lt;/p&gt;
+&lt;p&gt;In the simplest kind of test, you might just want to see if your web site up and displaying your home page. A curl command like this one will fetch the page and display the corresponding HTML code (assuming it's an HTML file).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;$ curl http://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document
+&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&lt;/span&gt; &lt;span class="na"&gt;lang=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;en-US&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Tryit Editor v2.6&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;viewport&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width=device-width&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;meta&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;viewport&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;content=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;link&lt;/span&gt; &lt;span class="na"&gt;rel=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/trystyle.css&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+...
+  &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;iframecontainer&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;iframe&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;overflow:auto;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;headerText&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Result:&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;iframewrapper&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;iframewrapper&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+      &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;footerText&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Try it Yourself - © &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3schools.com&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;w3schools.com&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;submitTryit()&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Even with the middle of the output omitted, you can see that curl grabbed the header and the content of the web page. To display just the header information and not the entire page, use the -I option. This option tells curl to get/show the document information only. This is also known as a "header test".&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl -I http://www.w3schools.com/html/tryit.asp?filename&lt;span class="o"&gt;=&lt;/span&gt;tryhtml_basic_document
+HTTP/1.1 &lt;span class="m"&gt;200&lt;/span&gt; OK
+Content-Encoding: gzip
+Accept-Ranges: bytes
+Cache-Control: Public,public
+Content-Type: text/html
+Date: Sun, &lt;span class="m"&gt;11&lt;/span&gt; Oct &lt;span class="m"&gt;2015&lt;/span&gt; 20:55:43 GMT
+Expires: Sun, &lt;span class="m"&gt;11&lt;/span&gt; Oct &lt;span class="m"&gt;2015&lt;/span&gt; 21:55:43 GMT
+Last-Modified: Sun, &lt;span class="m"&gt;11&lt;/span&gt; Oct &lt;span class="m"&gt;2015&lt;/span&gt; 20:19:38 GMT
+Server: ECS &lt;span class="o"&gt;(&lt;/span&gt;dca/2495&lt;span class="o"&gt;)&lt;/span&gt;
+X-Cache: HIT
+X-Powered-By: ASP.NET
+Content-Length: 2269
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If the page you're asking about doesn't exist, you'll see the 404 (Not Found) error as in the example below.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl -I www.google.com/ghost
+HTTP/1.1 &lt;span class="m"&gt;404&lt;/span&gt; Not Found
+Content-Type: text/html&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;UTF-8
+X-Content-Type-Options: nosniff
+Date: Sun, &lt;span class="m"&gt;11&lt;/span&gt; Oct &lt;span class="m"&gt;2015&lt;/span&gt; 23:24:08 GMT
+Server: sffe
+Content-Length: 1566
+X-XSS-Protection: 1&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;block
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;There's also a -v (verbose) option that will add even more content to your search results. Obviously, this would be more interesting with a page that exists, but here's an example.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl -Iv www.google.com/ghost
+*   Trying 173.194.121.52...
+* Connected to www.google.com &lt;span class="o"&gt;(&lt;/span&gt;173.194.121.52&lt;span class="o"&gt;)&lt;/span&gt; port &lt;span class="m"&gt;80&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="c"&gt;#0)&lt;/span&gt;
+&amp;gt; HEAD /ghost HTTP/1.1
+&amp;gt; User-Agent: curl/7.40.0
+&amp;gt; Host: www.google.com
+&amp;gt; Accept: */*
+&amp;gt;
+&amp;lt; HTTP/1.1 &lt;span class="m"&gt;404&lt;/span&gt; Not Found
+HTTP/1.1 &lt;span class="m"&gt;404&lt;/span&gt; Not Found
+&amp;lt; Content-Type: text/html&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;UTF-8
+Content-Type: text/html&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;UTF-8
+&amp;lt; X-Content-Type-Options: nosniff
+X-Content-Type-Options: nosniff
+&amp;lt; Date: Sun, &lt;span class="m"&gt;11&lt;/span&gt; Oct &lt;span class="m"&gt;2015&lt;/span&gt; 23:25:41 GMT
+Date: Sun, &lt;span class="m"&gt;11&lt;/span&gt; Oct &lt;span class="m"&gt;2015&lt;/span&gt; 23:25:41 GMT
+&amp;lt; Server: sffe
+Server: sffe
+&amp;lt; Content-Length: 1566
+Content-Length: 1566
+&amp;lt; X-XSS-Protection: 1&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;block
+X-XSS-Protection: 1&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;block
+
+&amp;lt;
+* Connection &lt;span class="c"&gt;#0 to host www.google.com left intact&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Of course, when you're using curl to interact with web services, you need to use a command that works with those services. In this example, we're just confirming the connection and asking about the services that are running.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl -X GET https://10.1.2.3:443/myapp/command.submit?cmd&lt;span class="o"&gt;=&lt;/span&gt;about
+database-version&lt;span class="o"&gt;=&lt;/span&gt;6.5.1.65432
+server-version&lt;span class="o"&gt;=&lt;/span&gt;6.5.1.65432
+&lt;span class="nv"&gt;patches&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;P17
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In this example, we run a couple queries to get information on a member of the staff and then that individual's manager. Notice that the format (json) is specified. First, the person:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl -X GET &lt;span class="s1"&gt;&amp;#39;https://10.1.2.155:443/myapp/command.submit?cmd=&lt;/span&gt;
+&lt;span class="s1"&gt;findUsers&amp;amp;ad_login=sberry&amp;amp;format=json&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;findUsers&amp;quot;&lt;/span&gt;:&lt;span class="o"&gt;[&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;275&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;idc_id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;supervisor_id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;123&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;add_state&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;,
+&lt;span class="s2"&gt;&amp;quot;remove_state&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;ad_login&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;sberry&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;business_unit_id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,
+&lt;span class="s2"&gt;&amp;quot;creation_date&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;2013-07-23 13:34:13.0&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;deletion_date&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;2015-08&lt;/span&gt;
+&lt;span class="s2"&gt;-30 05:00:07.0&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;department&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;IT&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;email_address&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;sberry@boson.&lt;/span&gt;
+&lt;span class="s2"&gt;org&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;employee_type&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;exception_count&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;first_name&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;Sage&amp;quot;&lt;/span&gt;,
+&lt;span class="s2"&gt;&amp;quot;full_name&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;Sage Berry&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;is_terminated&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;True&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;job_status&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,
+&lt;span class="s2"&gt;&amp;quot;last_name&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;Berry&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;location&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;mail_nickname&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;sberry&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;start&lt;/span&gt;
+&lt;span class="s2"&gt;_date&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;2011-08-11 00:00:00.0&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;termination_date&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;2015-07-30 05&lt;/span&gt;
+&lt;span class="s2"&gt;:00:07.0&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;Unix Systems Administrator&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;unique_id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;CN=&lt;/span&gt;
+&lt;span class="s2"&gt;Sage Berry,OU=All Users,DC=boson,DC=org&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;user_id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;1234&amp;quot;&amp;quot;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then the manager:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl -k -X GET &lt;span class="s1"&gt;&amp;#39;https://10.1.2.155:443/myapp/command.submit?&lt;/span&gt;
+&lt;span class="s1"&gt;cmd=findUsers&amp;amp;id=31&amp;amp;format=json&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;findUsers&amp;quot;&lt;/span&gt;:&lt;span class="o"&gt;[&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;123&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;idc_id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;supervisor_id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;71&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;add_state&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;,
+&lt;span class="s2"&gt;&amp;quot;remove_state&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;ad_login&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;gjones&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;business_unit_id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,
+&lt;span class="s2"&gt;&amp;quot;creation_date&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;2012-05-25 13:34:13.0&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;deletion_date&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,
+&lt;span class="s2"&gt;&amp;quot;department&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;IT&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;email_address&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;gjones@boson.org&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;employee_ty&lt;/span&gt;
+&lt;span class="s2"&gt;pe&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;Regular&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;exception_count&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;first_name&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;Gary&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;full_name&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;Jones, Gary&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;is_terminated&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;False&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;job_status&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;Active&amp;quot;&lt;/span&gt;,
+&lt;span class="s2"&gt;&amp;quot;last_name&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;Jones&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;location&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;BOSTON, MA&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;mail_nickname&amp;quot;&lt;/span&gt;:
+&lt;span class="s2"&gt;&amp;quot;gjones&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;start_date&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;2011-02-28 00:00:00.0&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;termination_date&amp;quot;&lt;/span&gt;:
+&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;IT MGR&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;unique_id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;CN=Gary Jones,OU=All Users,DC=&lt;/span&gt;
+&lt;span class="s2"&gt;boson,DC=org&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;user_id&amp;quot;&lt;/span&gt;:&lt;span class="s2"&gt;&amp;quot;791&amp;quot;&amp;quot;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Your web servers will have to be set up to permit this kind of access and may well require that they be configured with the IP addresses of systems that are allowed to run these queries.&lt;/p&gt;
+&lt;p&gt;To get a list of the options available, just use the command curl --help. The output shown below is less than a third of what you'll see, but should give you an idea about how many options are available.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl --help
+Usage: curl &lt;span class="o"&gt;[&lt;/span&gt;options...&lt;span class="o"&gt;]&lt;/span&gt; &amp;lt;url&amp;gt;
+Options: &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt; means HTTP/HTTPS only, &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt; means FTP only
+     --anyauth       Pick &lt;span class="s2"&gt;&amp;quot;any&amp;quot;&lt;/span&gt; authentication method &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+ -a, --append        Append to target file when uploading
+                    &lt;span class="o"&gt;(&lt;/span&gt;F/SFTP&lt;span class="o"&gt;)&lt;/span&gt;
+     --basic         Use HTTP Basic Authentication &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+     --cacert FILE   CA certificate to verify peer against &lt;span class="o"&gt;(&lt;/span&gt;SSL&lt;span class="o"&gt;)&lt;/span&gt;
+     --capath DIR    CA directory to verify peer against &lt;span class="o"&gt;(&lt;/span&gt;SSL&lt;span class="o"&gt;)&lt;/span&gt;
+ -E, --cert CERT&lt;span class="o"&gt;[&lt;/span&gt;:PASSWD&lt;span class="o"&gt;]&lt;/span&gt;  Client certificate file and password
+                    &lt;span class="o"&gt;(&lt;/span&gt;SSL&lt;span class="o"&gt;)&lt;/span&gt;
+     --cert-type TYPE  Certificate file &lt;span class="nb"&gt;type&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;DER/PEM/ENG&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;SSL&lt;span class="o"&gt;)&lt;/span&gt;
+     --ciphers LIST  SSL ciphers to use &lt;span class="o"&gt;(&lt;/span&gt;SSL&lt;span class="o"&gt;)&lt;/span&gt;
+     --compressed    Request compressed response &lt;span class="o"&gt;(&lt;/span&gt;using deflate
+                     or gzip&lt;span class="o"&gt;)&lt;/span&gt;
+ -K, --config FILE   Read config from FILE
+     --connect-timeout SECONDS  Maximum &lt;span class="nb"&gt;time &lt;/span&gt;allowed &lt;span class="k"&gt;for&lt;/span&gt;
+                     connection
+ -C, --continue-at OFFSET  Resumed transfer OFFSET
+ -b, --cookie STRING/FILE  Read cookies from STRING/FILE
+                     &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+ -c, --cookie-jar FILE  Write cookies to FILE after operation
+                     &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+     --create-dirs   Create necessary &lt;span class="nb"&gt;local &lt;/span&gt;directory hierarchy
+     --crlf          Convert LF to CRLF in upload
+     --crlfile FILE  Get a CRL list in PEM format from the
+                     given file
+ -d, --data DATA     HTTP POST data &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+     --data-ascii DATA  HTTP POST ASCII data &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+     --data-binary DATA  HTTP POST binary data &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+     --data-urlencode DATA  HTTP POST data url encoded &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+     --delegation STRING  GSS-API delegation permission
+     --digest        Use HTTP Digest Authentication &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+     --disable-eprt  Inhibit using EPRT or LPRT &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --disable-epsv  Inhibit using EPSV &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --dns-servers   DNS server addrs to use: 1.1.1.1&lt;span class="p"&gt;;&lt;/span&gt;2.2.2.2
+     --dns-interface  Interface to use &lt;span class="k"&gt;for&lt;/span&gt; DNS requests
+     --dns-ipv4-addr  IPv4 address to use &lt;span class="k"&gt;for&lt;/span&gt; DNS requests, dot
+                      notation
+     --dns-ipv6-addr  IPv6 address to use &lt;span class="k"&gt;for&lt;/span&gt; DNS requests, dot
+                      notation
+ -D, --dump-header FILE  Write the headers to FILE
+     --egd-file FILE  EGD socket path &lt;span class="k"&gt;for&lt;/span&gt; random data &lt;span class="o"&gt;(&lt;/span&gt;SSL&lt;span class="o"&gt;)&lt;/span&gt;
+     --engine ENGINE  Crypto engine &lt;span class="o"&gt;(&lt;/span&gt;use &lt;span class="s2"&gt;&amp;quot;--engine list&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt;
+                      list&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;SSL&lt;span class="o"&gt;)&lt;/span&gt;
+ -f, --fail           Fail silently &lt;span class="o"&gt;(&lt;/span&gt;no output at all&lt;span class="o"&gt;)&lt;/span&gt; on HTTP
+                      errors &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+ -F, --form CONTENT  Specify HTTP multipart POST data &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+     --form-string STRING  Specify HTTP multipart POST data &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+     --ftp-account DATA  Account data string &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --ftp-alternative-to-user COMMAND  String to replace &lt;span class="s2"&gt;&amp;quot;USER&lt;/span&gt;
+&lt;span class="s2"&gt;                     [name]&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --ftp-create-dirs  Create the remote &lt;span class="nb"&gt;dirs &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; not present
+                     &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --ftp-method &lt;span class="o"&gt;[&lt;/span&gt;MULTICWD/NOCWD/SINGLECWD&lt;span class="o"&gt;]&lt;/span&gt;  Control CWD usage
+                     &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --ftp-pasv      Use PASV/EPSV instead of PORT &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+ -P, --ftp-port ADR  Use PORT with given address instead of
+                     PASV &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --ftp-skip-pasv-ip  Skip the IP address &lt;span class="k"&gt;for&lt;/span&gt; PASV &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --ftp-pret      Send PRET before PASV &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; drftpd&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --ftp-ssl-ccc   Send CCC after authenticating &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --ftp-ssl-ccc-mode ACTIVE/PASSIVE  Set CCC mode &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+     --ftp-ssl-control  Require SSL/TLS &lt;span class="k"&gt;for&lt;/span&gt; FTP login, clear &lt;span class="k"&gt;for&lt;/span&gt;
+                     transfer &lt;span class="o"&gt;(&lt;/span&gt;F&lt;span class="o"&gt;)&lt;/span&gt;
+ -G, --get           Send the -d data with a HTTP GET &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+ -g, --globoff       Disable URL sequences and ranges using &lt;span class="o"&gt;{}&lt;/span&gt;
+                     and &lt;span class="o"&gt;[]&lt;/span&gt;
+ -H, --header LINE   Pass custom header LINE to server &lt;span class="o"&gt;(&lt;/span&gt;H&lt;span class="o"&gt;)&lt;/span&gt;
+ -I, --head          Show document info only
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Clearly, curl is not a tool that you will completely conquer in one sitting.  Then again, you probably won't need to learn any more than how to use it with your web services and in your environment.  But it's clearly a tool to keep in mind whether you're trying a very simple "does it respond?" test or interacting with your server using some interesting queries.&lt;/p&gt;</summary><category term="linux"></category><category term="commands"></category><category term="introductory"></category><category term="howto"></category></entry></feed>
