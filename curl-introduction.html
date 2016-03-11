@@ -74,6 +74,11 @@
 						<i class="icon-folder-open icon-large"></i>Pelican
 					</a>
                   </li>
+                  <li >
+                    <a href="http://ericvs.github.io/category/venting.html">
+						<i class="icon-folder-open icon-large"></i>Venting
+					</a>
+                  </li>
 
                           <ul class="nav pull-right">
                                 <li><a href="http://ericvs.github.io/archives.html"><i class="icon-th-list"></i>Archives</a></li>
@@ -121,22 +126,22 @@
 </footer><!-- /.post-info -->                </div>
                 <p>If you haven't yet discovered the versatile curl, you might just be surprised by how clever a tool it is. curl, or cURL, is a lot more than a drop-in replacement for wget. Although either tool can be used to run a quick test of a web site, they really have different missions in the web universe. The wget command is used to grab pages from a web site -- either to test that they are available or to download them -- and can also be used to recursively download an entire site. curl, on the other hand, downloads pages just fine, but it can upload files and post data to web sites just as easily and it can converse with web sites using a wide range of protocols that is likely to surprise you -- including DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, TELNET, and TFTP. You can also use curl to interact with web-based APIs as REST, json, and SOAP. It's also been ported to a large number of operating systems including Solaris, NetBSD, FreeBSD, OpenBSD, Darwin, HPUX, IRIX, AIX, Tru64, Linux, UnixWare, HURD, Windows, and others.</p>
 <p>The simplest use of curl is type the command itself followed by the URL you want to check out. Here's one that seems to have been set up to anticipate your curl tests:</p>
-<div class="highlight"><pre><span class="nv">$ </span>curl quiet-waters-1228.herokuapp.com/hello
+<div class="highlight"><pre><span></span>$ curl quiet-waters-1228.herokuapp.com/hello
 Hello, World!
 Thank you <span class="k">for</span> cURLing me!
 </pre></div>
 
 
 <p>And, if you want to save the content of the page as part of your request, add the -o option along with a file name.</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="s-Atom">curl</span> <span class="o">-</span><span class="s-Atom">o</span> <span class="s-Atom">msg</span> <span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="s-Atom">quiet</span><span class="o">-</span><span class="s-Atom">waters</span><span class="o">-</span><span class="mf">1228.</span><span class="s-Atom">herokuapp</span><span class="p">.</span><span class="s-Atom">com</span><span class="o">/</span><span class="s-Atom">hello</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="s s-Atom">curl</span> <span class="o">-</span><span class="s s-Atom">o</span> <span class="s s-Atom">msg</span> <span class="nn">http</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">quiet</span><span class="o">-</span><span class="s s-Atom">waters</span><span class="o">-</span><span class="mf">1228.</span><span class="s s-Atom">herokuapp</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">hello</span>
   <span class="c1">% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span>
                                  <span class="nv">Dload</span>  <span class="nv">Upload</span>   <span class="nv">Total</span>   <span class="nv">Spent</span>    <span class="nv">Left</span>  <span class="nv">Speed</span>
-<span class="mi">100</span>    <span class="mi">40</span>    <span class="mi">0</span>    <span class="mi">40</span>    <span class="mi">0</span>     <span class="mi">0</span>   <span class="mi">2191</span>      <span class="mi">0</span> <span class="s-Atom">--:--:--</span> <span class="s-Atom">--:--:--</span> <span class="s-Atom">--:--:--</span>  <span class="mi">2222</span>
+<span class="mi">100</span>    <span class="mi">40</span>    <span class="mi">0</span>    <span class="mi">40</span>    <span class="mi">0</span>     <span class="mi">0</span>   <span class="mi">2191</span>      <span class="mi">0</span> <span class="s s-Atom">--:--:--</span> <span class="s s-Atom">--:--:--</span> <span class="s s-Atom">--:--:--</span>  <span class="mi">2222</span>
 </pre></div>
 
 
 <p>Looking at the file afterwards, you can see that you've captured its content:</p>
-<div class="highlight"><pre><span class="nv">$ </span>cat msg
+<div class="highlight"><pre><span></span>$ cat msg
 Hello, World!
 Thank you <span class="k">for</span> cURLing me!
 </pre></div>
@@ -144,9 +149,9 @@ Thank you <span class="k">for</span> cURLing me!
 
 <p>The name "curl" stands for "client URL", though some sysadmins find it easier to remember then name if they think of it as "see URL". It's also often written "cURL" to emphasize the "URL" part of the name. It is, after all, a tool that allows you to interact with URLs to get a variety of work tasks done.</p>
 <p>The curl command is said to be "powered by libCurl" for its transfer abilities. If you check your system and find curl is installed, you will also find its library files.</p>
-<div class="highlight"><pre><span class="nv">$ </span>which curl
+<div class="highlight"><pre><span></span>$ which curl
 /usr/bin/curl
-<span class="nv">$ </span>sudo find / -name libcurl* -print
+$ sudo find / -name libcurl* -print
 /usr/share/licenses/libcurl-7.40.0
 /usr/lib64/libcurl.so.4.3.0
 /usr/lib64/libcurl.so.4
@@ -155,7 +160,7 @@ Thank you <span class="k">for</span> cURLing me!
 
 <p>Testing a web site using curl is as easy as testing one using wget. You just use a command that basically says "show me the web page at this address and it makes a GET request and shows you the page in all of its text-based glory. Maybe that isn't how everyone wants to see web pages, but being able to test a site from the command line brings a certain joy to most of our nerdy little hearts. And, when you see some of the additional things that you can do with this versatile tool, like querying web services and applications, you might decide this is a tool you want to keep in your little arsenal of clever tricks.</p>
 <p>In the simplest kind of test, you might just want to see if your web site up and displaying your home page. A curl command like this one will fetch the page and display the corresponding HTML code (assuming it's an HTML file).</p>
-<div class="highlight"><pre>$ curl http://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document
+<div class="highlight"><pre><span></span>$ curl http://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic_document
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en-US&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
@@ -182,7 +187,7 @@ Thank you <span class="k">for</span> cURLing me!
 
 
 <p>Even with the middle of the output omitted, you can see that curl grabbed the header and the content of the web page. To display just the header information and not the entire page, use the -I option. This option tells curl to get/show the document information only. This is also known as a "header test".</p>
-<div class="highlight"><pre><span class="nv">$ </span>curl -I http://www.w3schools.com/html/tryit.asp?filename<span class="o">=</span>tryhtml_basic_document
+<div class="highlight"><pre><span></span>$ curl -I http://www.w3schools.com/html/tryit.asp?filename<span class="o">=</span>tryhtml_basic_document
 HTTP/1.1 <span class="m">200</span> OK
 Content-Encoding: gzip
 Accept-Ranges: bytes
@@ -199,7 +204,7 @@ Content-Length: 2269
 
 
 <p>If the page you're asking about doesn't exist, you'll see the 404 (Not Found) error as in the example below.</p>
-<div class="highlight"><pre><span class="nv">$ </span>curl -I www.google.com/ghost
+<div class="highlight"><pre><span></span>$ curl -I www.google.com/ghost
 HTTP/1.1 <span class="m">404</span> Not Found
 Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>UTF-8
 X-Content-Type-Options: nosniff
@@ -211,9 +216,9 @@ X-XSS-Protection: 1<span class="p">;</span> <span class="nv">mode</span><span cl
 
 
 <p>There's also a -v (verbose) option that will add even more content to your search results. Obviously, this would be more interesting with a page that exists, but here's an example.</p>
-<div class="highlight"><pre><span class="nv">$ </span>curl -Iv www.google.com/ghost
+<div class="highlight"><pre><span></span>$ curl -Iv www.google.com/ghost
 *   Trying 173.194.121.52...
-* Connected to www.google.com <span class="o">(</span>173.194.121.52<span class="o">)</span> port <span class="m">80</span> <span class="o">(</span><span class="c">#0)</span>
+* Connected to www.google.com <span class="o">(</span>173.194.121.52<span class="o">)</span> port <span class="m">80</span> <span class="o">(</span><span class="c1">#0)</span>
 &gt; HEAD /ghost HTTP/1.1
 &gt; User-Agent: curl/7.40.0
 &gt; Host: www.google.com
@@ -235,12 +240,12 @@ Content-Length: 1566
 X-XSS-Protection: 1<span class="p">;</span> <span class="nv">mode</span><span class="o">=</span>block
 
 &lt;
-* Connection <span class="c">#0 to host www.google.com left intact</span>
+* Connection <span class="c1">#0 to host www.google.com left intact</span>
 </pre></div>
 
 
 <p>Of course, when you're using curl to interact with web services, you need to use a command that works with those services. In this example, we're just confirming the connection and asking about the services that are running.</p>
-<div class="highlight"><pre><span class="nv">$ </span>curl -X GET https://10.1.2.3:443/myapp/command.submit?cmd<span class="o">=</span>about
+<div class="highlight"><pre><span></span>$ curl -X GET https://10.1.2.3:443/myapp/command.submit?cmd<span class="o">=</span>about
 database-version<span class="o">=</span>6.5.1.65432
 server-version<span class="o">=</span>6.5.1.65432
 <span class="nv">patches</span><span class="o">=</span>P17
@@ -248,7 +253,7 @@ server-version<span class="o">=</span>6.5.1.65432
 
 
 <p>In this example, we run a couple queries to get information on a member of the staff and then that individual's manager. Notice that the format (json) is specified. First, the person:</p>
-<div class="highlight"><pre><span class="nv">$ </span>curl -X GET <span class="s1">&#39;https://10.1.2.155:443/myapp/command.submit?cmd=</span>
+<div class="highlight"><pre><span></span>$ curl -X GET <span class="s1">&#39;https://10.1.2.155:443/myapp/command.submit?cmd=</span>
 <span class="s1">findUsers&amp;ad_login=sberry&amp;format=json&#39;</span>
 <span class="o">{</span>
 <span class="s2">&quot;findUsers&quot;</span>:<span class="o">[</span>
@@ -266,7 +271,7 @@ server-version<span class="o">=</span>6.5.1.65432
 
 
 <p>Then the manager:</p>
-<div class="highlight"><pre><span class="nv">$ </span>curl -k -X GET <span class="s1">&#39;https://10.1.2.155:443/myapp/command.submit?</span>
+<div class="highlight"><pre><span></span>$ curl -k -X GET <span class="s1">&#39;https://10.1.2.155:443/myapp/command.submit?</span>
 <span class="s1">cmd=findUsers&amp;id=31&amp;format=json&#39;</span>
 <span class="o">{</span>
 <span class="s2">&quot;findUsers&quot;</span>:<span class="o">[</span>
@@ -285,7 +290,7 @@ server-version<span class="o">=</span>6.5.1.65432
 
 <p>Your web servers will have to be set up to permit this kind of access and may well require that they be configured with the IP addresses of systems that are allowed to run these queries.</p>
 <p>To get a list of the options available, just use the command curl --help. The output shown below is less than a third of what you'll see, but should give you an idea about how many options are available.</p>
-<div class="highlight"><pre><span class="nv">$ </span>curl --help
+<div class="highlight"><pre><span></span>$ curl --help
 Usage: curl <span class="o">[</span>options...<span class="o">]</span> &lt;url&gt;
 Options: <span class="o">(</span>H<span class="o">)</span> means HTTP/HTTPS only, <span class="o">(</span>F<span class="o">)</span> means FTP only
      --anyauth       Pick <span class="s2">&quot;any&quot;</span> authentication method <span class="o">(</span>H<span class="o">)</span>
@@ -301,14 +306,14 @@ Options: <span class="o">(</span>H<span class="o">)</span> means HTTP/HTTPS only
      --compressed    Request compressed response <span class="o">(</span>using deflate
                      or gzip<span class="o">)</span>
  -K, --config FILE   Read config from FILE
-     --connect-timeout SECONDS  Maximum <span class="nb">time </span>allowed <span class="k">for</span>
+     --connect-timeout SECONDS  Maximum <span class="nb">time</span> allowed <span class="k">for</span>
                      connection
  -C, --continue-at OFFSET  Resumed transfer OFFSET
  -b, --cookie STRING/FILE  Read cookies from STRING/FILE
                      <span class="o">(</span>H<span class="o">)</span>
  -c, --cookie-jar FILE  Write cookies to FILE after operation
                      <span class="o">(</span>H<span class="o">)</span>
-     --create-dirs   Create necessary <span class="nb">local </span>directory hierarchy
+     --create-dirs   Create necessary <span class="nb">local</span> directory hierarchy
      --crlf          Convert LF to CRLF in upload
      --crlfile FILE  Get a CRL list in PEM format from the
                      given file
@@ -337,7 +342,7 @@ Options: <span class="o">(</span>H<span class="o">)</span> means HTTP/HTTPS only
      --ftp-account DATA  Account data string <span class="o">(</span>F<span class="o">)</span>
      --ftp-alternative-to-user COMMAND  String to replace <span class="s2">&quot;USER</span>
 <span class="s2">                     [name]&quot;</span> <span class="o">(</span>F<span class="o">)</span>
-     --ftp-create-dirs  Create the remote <span class="nb">dirs </span><span class="k">if</span> not present
+     --ftp-create-dirs  Create the remote <span class="nb">dirs</span> <span class="k">if</span> not present
                      <span class="o">(</span>F<span class="o">)</span>
      --ftp-method <span class="o">[</span>MULTICWD/NOCWD/SINGLECWD<span class="o">]</span>  Control CWD usage
                      <span class="o">(</span>F<span class="o">)</span>
@@ -385,6 +390,11 @@ Options: <span class="o">(</span>H<span class="o">)</span> means HTTP/HTTPS only
 <li>
 <a href="http://ericvs.github.io/category/pelican.html">
     <i class="icon-folder-open icon-large"></i>Pelican
+</a>
+</li>
+<li>
+<a href="http://ericvs.github.io/category/venting.html">
+    <i class="icon-folder-open icon-large"></i>Venting
 </a>
 </li>
 
