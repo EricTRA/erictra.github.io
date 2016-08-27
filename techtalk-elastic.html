@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Eric V. Braindumps - howto</title>
+    <title>Moving towards newer technologeis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Eric Van Steenbergen">
@@ -74,7 +74,7 @@
 						<i class="icon-folder-open icon-large"></i>Pelican
 					</a>
                   </li>
-                  <li >
+                  <li class="active">
                     <a href="http://ericvs.github.io/category/techtalk.html">
 						<i class="icon-folder-open icon-large"></i>TechTalk
 					</a>
@@ -99,31 +99,63 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
-        <div class="article">
-                <h1><a href="http://ericvs.github.io/curl-introduction.html">The cURL command</a></h1>
-                <div class="well small"><footer class="post-info">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Moving towards newer technologeis">
+                                        Moving towards newer technologeis
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
 <span class="label">Date</span>
-<abbr class="published" title="2015-10-16T08:00:00+08:00">
-        <i class="icon-calendar"></i>Fri 16 October 2015
+<abbr class="published" title="2016-08-27T07:35:00+08:00">
+        <i class="icon-calendar"></i>Sat 27 August 2016
 </abbr>
 <span class="label">By</span>
 <a href="http://ericvs.github.io/author/eric-van-steenbergen.html"><i class="icon-user"></i>Eric Van Steenbergen</a>
 <span class="label">Category</span>
-<a href="http://ericvs.github.io/category/howto.html"><i class="icon-folder-open"></i>HowTo</a>.
+<a href="http://ericvs.github.io/category/techtalk.html"><i class="icon-folder-open"></i>TechTalk</a>.
 
 
 <span class="label">Tags</span>
-	<a href="http://ericvs.github.io/tag/linux.html"><i class="icon-tag"></i>linux</a>
-	<a href="http://ericvs.github.io/tag/commands.html"><i class="icon-tag"></i>commands</a>
-	<a href="http://ericvs.github.io/tag/introductory.html"><i class="icon-tag"></i>introductory</a>
-	<a href="http://ericvs.github.io/tag/howto.html"><i class="icon-tag"></i>howto</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>The curl command is a versatile tool for working with web sites and web applications</p>
-                        <a class="btn primary xsmall" href="http://ericvs.github.io/curl-introduction.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-
+	<a href="http://ericvs.github.io/tag/techtalk.html"><i class="icon-tag"></i>techtalk</a>
+	<a href="http://ericvs.github.io/tag/elasticseearch.html"><i class="icon-tag"></i>elasticseearch</a>
+	<a href="http://ericvs.github.io/tag/logstash.html"><i class="icon-tag"></i>logstash</a>
+	<a href="http://ericvs.github.io/tag/ansible.html"><i class="icon-tag"></i>ansible</a>
+	<a href="http://ericvs.github.io/tag/zookeeper.html"><i class="icon-tag"></i>zookeeper</a>
+	<a href="http://ericvs.github.io/tag/kafka.html"><i class="icon-tag"></i>kafka</a>
+</footer><!-- /.post-info -->                </div>
+                <p>Finally! I would say: at last! Catching up to what I was used to work with in the past is very satisfying indeed.
+Implementing things I've had little experience with previously, is even more addicting than what a junky would call
+a good shot up.</p>
+<p>Two years ago when I started where I am, I proposed the use of centralized log management and analytical tools
+on said logs to work proactive instead of reactive. I'm proud to say that finally that day has come. </p>
+<p>It started out about three months ago after upper management and the business realized that the solution
+as advised and implemented by one of the resident seagulls was not 'all covering' and would eventually
+come at a very high cost. </p>
+<p>Following this realization I was (t)asked to come up with an alternative. I proposed ELK and got cracking on 
+setting up the first in-house centralized log management and analytical tool shouldered by technically skilled
+engineers. </p>
+<p>I took of with a simple and straightforward setup of three nodes, got it up and running right before going on 
+vacation and handed over to a friend and colleague for further configuration. When I got back after my week of
+R&amp;R I got the message that this had now been prioritized and would be used for 'high profile' logs which I 
+knew meant lots of volume and traffic. The three node cluster would fail miserably, I knew that up front so
+I started rebuilding the cluster with a 9 node setup now, pre-processors and all included.</p>
+<p>Next thing you know about one week later my little pet POC project got 'upgraded' to high priority and
+required by 'the business'. Once I realized the sheer volume and data would kill my little cluster in a 
+heartbeat I designed a high performance, highly available setup with a 17 node environment.</p>
+<p>That has been purring along for the last months now and is happily taking in data, currently holding
+over 22 TB and receiving an average 750 GB per day! The storage guys don't like me anymore.</p>
+<p>Techie stuff and details of the setup to follow in other posts.</p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
         </div><!--/span-->
 
                 <div class="span3 well sidebar-nav" id="sidebar">

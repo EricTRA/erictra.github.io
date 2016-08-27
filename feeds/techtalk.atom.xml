@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eric V. Braindumps</title><link href="http://ericvs.github.io/" rel="alternate"></link><link href="http://ericvs.github.io/feeds/techtalk.atom.xml" rel="self"></link><id>http://ericvs.github.io/</id><updated>2016-08-27T07:35:00+08:00</updated><entry><title>Moving towards newer technologeis</title><link href="http://ericvs.github.io/techtalk-elastic.html" rel="alternate"></link><published>2016-08-27T07:35:00+08:00</published><author><name>Eric Van Steenbergen</name></author><id>tag:ericvs.github.io,2016-08-27:techtalk-elastic.html</id><summary type="html">&lt;p&gt;Finally! I would say: at last! Catching up to what I was used to work with in the past is very satisfying indeed.
+Implementing things I've had little experience with previously, is even more addicting than what a junky would call
+a good shot up.&lt;/p&gt;
+&lt;p&gt;Two years ago when I started where I am, I proposed the use of centralized log management and analytical tools
+on said logs to work proactive instead of reactive. I'm proud to say that finally that day has come. &lt;/p&gt;
+&lt;p&gt;It started out about three months ago after upper management and the business realized that the solution
+as advised and implemented by one of the resident seagulls was not 'all covering' and would eventually
+come at a very high cost. &lt;/p&gt;
+&lt;p&gt;Following this realization I was (t)asked to come up with an alternative. I proposed ELK and got cracking on 
+setting up the first in-house centralized log management and analytical tool shouldered by technically skilled
+engineers. &lt;/p&gt;
+&lt;p&gt;I took of with a simple and straightforward setup of three nodes, got it up and running right before going on 
+vacation and handed over to a friend and colleague for further configuration. When I got back after my week of
+R&amp;amp;R I got the message that this had now been prioritized and would be used for 'high profile' logs which I 
+knew meant lots of volume and traffic. The three node cluster would fail miserably, I knew that up front so
+I started rebuilding the cluster with a 9 node setup now, pre-processors and all included.&lt;/p&gt;
+&lt;p&gt;Next thing you know about one week later my little pet POC project got 'upgraded' to high priority and
+required by 'the business'. Once I realized the sheer volume and data would kill my little cluster in a 
+heartbeat I designed a high performance, highly available setup with a 17 node environment.&lt;/p&gt;
+&lt;p&gt;That has been purring along for the last months now and is happily taking in data, currently holding
+over 22 TB and receiving an average 750 GB per day! The storage guys don't like me anymore.&lt;/p&gt;
+&lt;p&gt;Techie stuff and details of the setup to follow in other posts.&lt;/p&gt;</summary><category term="techtalk"></category><category term="elasticseearch"></category><category term="logstash"></category><category term="ansible"></category><category term="zookeeper"></category><category term="kafka"></category></entry></feed>
