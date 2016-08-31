@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Eric V. Braindumps - linux</title>
+    <title>The misconception of sudo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Eric Van Steenbergen">
@@ -64,7 +64,7 @@
           <div class="nav-collapse">
             <ul class="nav">
                           <li class="divider-vertical"></li>
-                  <li >
+                  <li class="active">
                     <a href="http://ericvs.github.io/category/howto.html">
 						<i class="icon-folder-open icon-large"></i>HowTo
 					</a>
@@ -99,9 +99,20 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
-        <div class="article">
-                <h1><a href="http://ericvs.github.io/sudo.html">The misconception of sudo</a></h1>
-                <div class="well small"><footer class="post-info">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to The misconception of sudo">
+                                        The misconception of sudo
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
 <span class="label">Date</span>
 <abbr class="published" title="2016-09-01T05:15:00+08:00">
         <i class="icon-calendar"></i>Thu 01 September 2016
@@ -117,37 +128,32 @@
 	<a href="http://ericvs.github.io/tag/commands.html"><i class="icon-tag"></i>commands</a>
 	<a href="http://ericvs.github.io/tag/security.html"><i class="icon-tag"></i>security</a>
 	<a href="http://ericvs.github.io/tag/howto.html"><i class="icon-tag"></i>howto</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>The misconception of sudo in all its glory, or how the 'all' keyword handles it all</p>
-                        <a class="btn primary xsmall" href="http://ericvs.github.io/sudo.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="http://ericvs.github.io/curl-introduction.html">The cURL command</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2015-10-16T08:00:00+08:00">
-        <i class="icon-calendar"></i>Fri 16 October 2015
-</abbr>
-<span class="label">By</span>
-<a href="http://ericvs.github.io/author/eric-van-steenbergen.html"><i class="icon-user"></i>Eric Van Steenbergen</a>
-<span class="label">Category</span>
-<a href="http://ericvs.github.io/category/howto.html"><i class="icon-folder-open"></i>HowTo</a>.
-
-
-<span class="label">Tags</span>
-	<a href="http://ericvs.github.io/tag/linux.html"><i class="icon-tag"></i>linux</a>
-	<a href="http://ericvs.github.io/tag/commands.html"><i class="icon-tag"></i>commands</a>
-	<a href="http://ericvs.github.io/tag/introductory.html"><i class="icon-tag"></i>introductory</a>
-	<a href="http://ericvs.github.io/tag/howto.html"><i class="icon-tag"></i>howto</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>The curl command is a versatile tool for working with web sites and web applications</p>
-                        <a class="btn primary xsmall" href="http://ericvs.github.io/curl-introduction.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-
+</footer><!-- /.post-info -->                </div>
+                <p>It's amazing how I have to fight the continuous battle against the utter disregard of 
+technology and security, even against those who consider themselves technically savvy.</p>
+<p>At least one person thinks about them being quite the opposite way. When it comes
+to what are supposed to be seasoned systems administrators and engineers I would
+assume that the 'fear of failure' or the good old 'God complex' feeling supersedes
+the logical thinking the same people should demonstrate.</p>
+<p><strong>Fact: sudo is not being used as per design</strong>.... Deny access to every command except those
+specifically allowed. </p>
+<p>The way a lot of people, including our historical setup, use sudo is to just track what's
+being done on a system by using the 'all' keyword for the command aliases. This takes away 
+the purpose of sudo entirely since it opens up the system for any abuse a user might think 
+of. 
+If the 'all' keyword is used and you still want to implement some security you'll find
+yourself constructing command aliases to which you can then deny access after giving 
+permissions to run 'all'. 
+That particular way of addressing opening the door to everything is a walk down into
+the rabbit hole. You will never be able to 'plug' all holes available to technically
+savvy people. </p>
+<p>Best practice and security standards worldwide agree, use a technology for what it's 
+designed to be used for... Or don't use it at all!</p>
+<p>Stop with the stupidity of feeding those who don't know how to do things the normal way
+or the ones with the 'God complex'. </p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
         </div><!--/span-->
 
                 <div class="span3 well sidebar-nav" id="sidebar">

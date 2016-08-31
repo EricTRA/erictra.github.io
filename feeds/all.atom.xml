@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Eric V. Braindumps</title><link href="http://ericvs.github.io/" rel="alternate"></link><link href="http://ericvs.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ericvs.github.io/</id><updated>2016-08-27T07:35:00+08:00</updated><entry><title>Moving towards newer technologeis</title><link href="http://ericvs.github.io/techtalk-elastic.html" rel="alternate"></link><published>2016-08-27T07:35:00+08:00</published><author><name>Eric Van Steenbergen</name></author><id>tag:ericvs.github.io,2016-08-27:techtalk-elastic.html</id><summary type="html">&lt;p&gt;Finally! I would say: at last! Catching up to what I was used to work with in the past is very satisfying indeed.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eric V. Braindumps</title><link href="http://ericvs.github.io/" rel="alternate"></link><link href="http://ericvs.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ericvs.github.io/</id><updated>2016-09-01T05:15:00+08:00</updated><entry><title>The misconception of sudo</title><link href="http://ericvs.github.io/sudo.html" rel="alternate"></link><published>2016-09-01T05:15:00+08:00</published><author><name>Eric Van Steenbergen</name></author><id>tag:ericvs.github.io,2016-09-01:sudo.html</id><summary type="html">&lt;p&gt;It's amazing how I have to fight the continuous battle against the utter disregard of 
+technology and security, even against those who consider themselves technically savvy.&lt;/p&gt;
+&lt;p&gt;At least one person thinks about them being quite the opposite way. When it comes
+to what are supposed to be seasoned systems administrators and engineers I would
+assume that the 'fear of failure' or the good old 'God complex' feeling supersedes
+the logical thinking the same people should demonstrate.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fact: sudo is not being used as per design&lt;/strong&gt;.... Deny access to every command except those
+specifically allowed. &lt;/p&gt;
+&lt;p&gt;The way a lot of people, including our historical setup, use sudo is to just track what's
+being done on a system by using the 'all' keyword for the command aliases. This takes away 
+the purpose of sudo entirely since it opens up the system for any abuse a user might think 
+of. 
+If the 'all' keyword is used and you still want to implement some security you'll find
+yourself constructing command aliases to which you can then deny access after giving 
+permissions to run 'all'. 
+That particular way of addressing opening the door to everything is a walk down into
+the rabbit hole. You will never be able to 'plug' all holes available to technically
+savvy people. &lt;/p&gt;
+&lt;p&gt;Best practice and security standards worldwide agree, use a technology for what it's 
+designed to be used for... Or don't use it at all!&lt;/p&gt;
+&lt;p&gt;Stop with the stupidity of feeding those who don't know how to do things the normal way
+or the ones with the 'God complex'. &lt;/p&gt;</summary><category term="linux"></category><category term="commands"></category><category term="security"></category><category term="howto"></category></entry><entry><title>Moving towards newer technologeis</title><link href="http://ericvs.github.io/techtalk-elastic.html" rel="alternate"></link><published>2016-08-27T07:35:00+08:00</published><author><name>Eric Van Steenbergen</name></author><id>tag:ericvs.github.io,2016-08-27:techtalk-elastic.html</id><summary type="html">&lt;p&gt;Finally! I would say: at last! Catching up to what I was used to work with in the past is very satisfying indeed.
 Implementing things I've had little experience with previously, is even more addicting than what a junky would call
 a good shot up.&lt;/p&gt;
 &lt;p&gt;Two years ago when I started where I am, I proposed the use of centralized log management and analytical tools
