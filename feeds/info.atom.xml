@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Eric V. Braindumps</title><link href="http://ericvs.github.io/" rel="alternate"></link><link href="http://ericvs.github.io/feeds/info.atom.xml" rel="self"></link><id>http://ericvs.github.io/</id><updated>2016-11-03T05:25:00+08:00</updated><entry><title>Changes are upon us</title><link href="http://ericvs.github.io/info.html" rel="alternate"></link><published>2016-11-03T05:25:00+08:00</published><updated>2016-11-03T05:25:00+08:00</updated><author><name>Eric Van Steenbergen</name></author><id>tag:ericvs.github.io,2016-11-03:info.html</id><summary type="html">&lt;p&gt;With the current ongoing situation of eternal competition between companies in the industry 
+I work in, changes were to be expected. We will go from a development driven company to an 
+operations driven one, FINALLY!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fact: development driven has a very high cost on stability and security&lt;/strong&gt;.... 
+Developers always want to have their mits into everything, have all privileges and rights
+and deploy live to production. Well, that's living in Utopia for ya...&lt;/p&gt;
+&lt;p&gt;That would only work if you have all the necessary frameworks in place and rigorous testing
+is done on every line of code that goes into production. Talking about testing, that's exactly
+what we're missing out on at work. Finally I freed up time from ELK now that we're 
+getting in an external consultant to help out so I'm brushing up on my Python at last and put
+it to good use.&lt;/p&gt;
+&lt;p&gt;To be continued... &lt;/p&gt;</summary><category term="info"></category></entry></feed>
